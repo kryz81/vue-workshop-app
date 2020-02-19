@@ -4,7 +4,7 @@ import App from "../App";
 describe("App", () => {
   it("renders correctly", () => {
     const wrapper = shallowMount(App, {
-      stubs: ["router-view", "b-container", "b-row", "b-col"],
+      stubs: ["router-view"],
       computed: { mode: () => "dark" }
     });
     expect(wrapper.html()).toMatchSnapshot();

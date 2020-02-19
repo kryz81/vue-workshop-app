@@ -8,18 +8,6 @@ describe("Header", () => {
 
     // when
     const wrapper = shallowMount(Header, {
-      stubs: [
-        "toggleMode",
-        "b-container",
-        "b-navbar",
-        "b-navbar-brand",
-        "b-navbar-toggle",
-        "b-nav-item",
-        "b-icon",
-        "b-button",
-        "b-collapse",
-        "b-navbar-nav"
-      ],
       computed: { mode: () => currentMode }
     });
 
