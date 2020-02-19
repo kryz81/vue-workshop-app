@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<div class="h-100 main dark">
+  <header-stub></header-stub>
+  <b-container-stub>
+    <b-row-stub>
+      <b-col-stub>
+        <router-view-stub></router-view-stub>
+      </b-col-stub>
+    </b-row-stub>
+  </b-container-stub>
+  <b-container-stub>
+    <b-row-stub>
+      <b-col-stub>
+        <router-view-stub name="footer"></router-view-stub>
+      </b-col-stub>
+    </b-row-stub>
+  </b-container-stub>
+</div>
+`;

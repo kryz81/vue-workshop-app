@@ -1,5 +1,3 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <h4>About Conference</h4>
 </template>
