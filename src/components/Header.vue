@@ -18,7 +18,7 @@
           >
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-button size="sm" class="mr-5" @click="toggleMode"
+          <b-button size="sm" class="toggle-mode mr-5" @click="toggleMode"
             >{{ switchToMode }} Mode</b-button
           >
           <b-nav-item to="/profile"
