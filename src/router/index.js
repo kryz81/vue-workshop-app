@@ -27,7 +27,20 @@ const routes = [
     name: "SessionDetails",
     props: true,
     component: () =>
-      import(/* webpackChunkName: "sessions" */ "../views/SessionDetails.vue")
+      import(/* webpackChunkName: "sessions" */ "../views/SessionDetails.vue"),
+    children: [
+      {
+        path: "session-review",
+        name: "SessionReview",
+        props: true,
+        components: {
+          session: () =>
+            import(
+              /* webpackChunkName: "sessions" */ "../views/SessionReview.vue"
+            )
+        }
+      }
+    ]
   },
   {
     path: "/planner",

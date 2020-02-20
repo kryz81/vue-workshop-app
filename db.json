@@ -20,5 +20,66 @@
       "endDate": "15:15",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
+  ],
+  "reviews": [
+    {
+      "id": "6ab0294a-6eed-4d8b-829c-e35d5804e35e",
+      "mark": 4,
+      "content": "ddd"
+    },
+    {
+      "id": "75fabfbf-3e9d-4446-bb4e-ec3d92e60982",
+      "sessionId": "node-01",
+      "mark": 4,
+      "content": "sssss"
+    },
+    {
+      "id": "f11ebbfc-f687-41b0-9090-4160442b5775",
+      "sessionId": "node-01",
+      "mark": 4,
+      "content": "sddd"
+    },
+    {
+      "id": "3148a97d-75d5-42d9-a80a-4abbc35c92dd",
+      "sessionId": "node-01",
+      "mark": 4,
+      "content": "ddd"
+    },
+    {
+      "id": "59e849af-c0c5-409b-b27f-4ccbf045b061",
+      "sessionId": "node-01",
+      "mark": 3,
+      "content": "dddd"
+    },
+    {
+      "id": "376dc393-1e79-4cd5-84e7-e780339a9ce2",
+      "sessionId": "node-01",
+      "mark": 4,
+      "content": "sssss"
+    },
+    {
+      "id": "84710b37-006b-4549-ad18-ee0e98b7c32f",
+      "sessionId": "node-01",
+      "mark": 4,
+      "content": "sss"
+    },
+    {
+      "id": "02615877-4a57-48b2-9e1f-55683241f7cd",
+      "sessionId": "node-01",
+      "mark": 5,
+      "content": "ddd"
+    },
+    {
+      "id": "150235ac-f451-468e-9c5f-cf3955aa8a3e",
+      "sessionId": "node-01",
+      "mark": 4,
+      "content": "ddd"
+    },
+    {
+      "id": "9d5b1af6-f5da-4c51-bc82-c5dc798b58d8",
+      "sessionId": "node-01",
+      "mark": 4,
+      "content": "ddd"
+    }
   ]
 }

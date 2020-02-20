@@ -1,0 +1,20 @@
+import { mount } from "@vue/test-utils";
+import flushPromises from "flush-promises";
+import Session from "../Session";
+
+jest.mock("../../services/sessions");
+
+describe("Session", () => {
+  it("renders correctly", async () => {
+    // when
+    const wrapper = mount(Session, {
+      propsData: { id: "12345" }
+    });
+
+    await flushPromises();
+
+    // then
+    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.props("id")).toEqual("12345");
+  });
+});

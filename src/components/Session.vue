@@ -4,6 +4,15 @@
     <div v-if="session">
       <h4 class="mb-4">{{ session.title }}</h4>
       <p>{{ session.description }}</p>
+      <p class="mt-5">
+        <strong>
+          <router-link
+            :to="{ name: 'SessionReview', params: { sessionId: id } }"
+            ><b-icon icon="star-half"></b-icon> Write a review</router-link
+          ></strong
+        >
+      </p>
+      <router-view name="session" :sessionId="id" />
     </div>
   </div>
 </template>
