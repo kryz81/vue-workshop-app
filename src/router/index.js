@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/Home";
+import Login from "../views/Login";
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login
   },
   {
     path: "/about",
@@ -30,13 +36,24 @@ const routes = [
       import(/* webpackChunkName: "sessions" */ "../views/SessionDetails.vue"),
     children: [
       {
-        path: "session-review",
-        name: "SessionReview",
+        path: "add-session-review",
+        name: "AddSessionReview",
         props: true,
         components: {
           session: () =>
             import(
-              /* webpackChunkName: "sessions" */ "../views/SessionReview.vue"
+              /* webpackChunkName: "sessions" */ "../views/AddSessionReview.vue"
+            )
+        }
+      },
+      {
+        path: "session-reviews",
+        name: "SessionReviews",
+        props: true,
+        components: {
+          session: () =>
+            import(
+              /* webpackChunkName: "sessions" */ "../views/SessionReviews.vue"
             )
         }
       }

@@ -21,11 +21,14 @@
           <b-button size="sm" class="toggle-mode mr-5" @click="toggleMode"
             >{{ switchToMode }} Mode</b-button
           >
-          <b-nav-item to="/profile"
-            ><b-icon icon="person-fill"></b-icon> Profile</b-nav-item
+          <b-nav-item v-if="userName" to="/profile"
+            ><b-icon icon="person-fill"></b-icon> {{ userName }}</b-nav-item
           >
-          <b-nav-item to="/logout"
+          <b-nav-item v-if="userName" @click="logout"
             ><b-icon icon="power"></b-icon> Logout</b-nav-item
+          >
+          <b-nav-item v-if="!userName" to="/login"
+            ><b-icon icon="lock-fill"></b-icon> Login</b-nav-item
           >
         </b-navbar-nav>
       </b-collapse>
@@ -39,10 +42,14 @@ import { MODE_LIGHT } from "../store";
 
 export default {
   methods: {
-    ...mapActions(["toggleMode"])
+    ...mapActions(["toggleMode", "setUser"]),
+    logout: function() {
+      this.setUser();
+      this.$router.push("/");
+    }
   },
   computed: {
-    ...mapState(["mode"]),
+    ...mapState(["mode", "userName"]),
     switchToMode: function() {
       return this.mode === MODE_LIGHT ? "Dark" : "Light";
     }

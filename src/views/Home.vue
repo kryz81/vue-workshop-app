@@ -1,11 +1,3 @@
 <template>
-  <div class="home">
-    home
-  </div>
+  <h4>Welcome</h4>
 </template>
-
-<script>
-export default {
-  name: "Home"
-};
-</script>

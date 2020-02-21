@@ -1,5 +1,23 @@
 {
+  "login": [
+    {
+      "name": "Kryz",
+      "email": "k@kryz.dev",
+      "password": "zyrk"
+    }
+  ],
   "sessions": [
+    {
+      "id": "testing-02",
+      "title": "e2e Testing with Cypress",
+      "tutor": "Hannah Ebert",
+      "room": "A",
+      "day": 1,
+      "startDate": "9:00",
+      "endDate": "15:00",
+      "sponsored": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
     {
       "id": "node-01",
       "title": "Node-Tools für Frontend-Entwickler & Webpack",
@@ -8,6 +26,18 @@
       "day": 2,
       "startDate": "9:00",
       "endDate": "12:30",
+      "sponsored": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      "id": "angular-01",
+      "title": "Angular for Beginners",
+      "tutor": "Jens Hilde",
+      "room": "3",
+      "day": 2,
+      "startDate": "16:00",
+      "endDate": "18:00",
+      "sponsored": false,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     {
@@ -18,68 +48,38 @@
       "day": 3,
       "startDate": "11:00",
       "endDate": "15:15",
+      "sponsored": true,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
   ],
   "reviews": [
     {
-      "id": "6ab0294a-6eed-4d8b-829c-e35d5804e35e",
-      "mark": 4,
-      "content": "ddd"
-    },
-    {
-      "id": "75fabfbf-3e9d-4446-bb4e-ec3d92e60982",
+      "id": "1e5c8a1a-ea24-4b28-80e8-5a9217601739",
+      "added": "2020-02-20T16:15:46.030Z",
       "sessionId": "node-01",
       "mark": 4,
-      "content": "sssss"
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      "id": "f11ebbfc-f687-41b0-9090-4160442b5775",
-      "sessionId": "node-01",
-      "mark": 4,
-      "content": "sddd"
-    },
-    {
-      "id": "3148a97d-75d5-42d9-a80a-4abbc35c92dd",
-      "sessionId": "node-01",
-      "mark": 4,
-      "content": "ddd"
-    },
-    {
-      "id": "59e849af-c0c5-409b-b27f-4ccbf045b061",
-      "sessionId": "node-01",
-      "mark": 3,
-      "content": "dddd"
-    },
-    {
-      "id": "376dc393-1e79-4cd5-84e7-e780339a9ce2",
-      "sessionId": "node-01",
-      "mark": 4,
-      "content": "sssss"
-    },
-    {
-      "id": "84710b37-006b-4549-ad18-ee0e98b7c32f",
-      "sessionId": "node-01",
-      "mark": 4,
-      "content": "sss"
-    },
-    {
-      "id": "02615877-4a57-48b2-9e1f-55683241f7cd",
+      "id": "567fa566-b501-437a-8494-923dfc7875a1",
+      "added": "2020-02-20T16:22:31.434Z",
       "sessionId": "node-01",
       "mark": 5,
-      "content": "ddd"
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      "id": "150235ac-f451-468e-9c5f-cf3955aa8a3e",
+      "id": "20e11b12-5176-4a87-be89-e79f6e99223f",
+      "added": "2020-02-20T17:02:25.493Z",
       "sessionId": "node-01",
-      "mark": 4,
-      "content": "ddd"
+      "mark": 2,
+      "content": "I have a response from server and there are auth token, max age and some other values. In Postman it looks like."
     },
     {
-      "id": "9d5b1af6-f5da-4c51-bc82-c5dc798b58d8",
-      "sessionId": "node-01",
+      "id": "e61054b5-38e0-4508-b4c2-d5c6ada099b1",
+      "added": "2020-02-21T09:36:58.815Z",
+      "sessionId": "testing-01",
       "mark": 4,
-      "content": "ddd"
+      "content": "My beautiful first review"
     }
   ]
 }

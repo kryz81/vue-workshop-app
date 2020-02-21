@@ -1,5 +1,9 @@
 <template>
-  <b-form class="bg-light p-4" @submit.prevent="save">
+  <b-form
+    class="p-4"
+    :class="mode === MODE_LIGHT ? 'bg-light' : 'bg-dark'"
+    @submit.prevent="save"
+  >
     <b-form-group
       id="input-group-mark"
       label="Your note:"
@@ -21,7 +25,7 @@
     >
       <b-form-textarea
         id="input-content"
-        v-model="form.content"
+        v-model.lazy="form.content"
       ></b-form-textarea>
     </b-form-group>
     <b-button type="submit" variant="success">Send</b-button>
@@ -32,8 +36,11 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 import StarRating from "vue-star-rating";
 import { addReview } from "../services/reviews";
+import { MODE_LIGHT } from "../store";
 
 export default {
   components: {
@@ -48,8 +55,12 @@ export default {
   data: () => ({
     form: { mark: undefined, content: "" },
     reviewAdded: false,
-    reviewAddError: ""
+    reviewAddError: "",
+    MODE_LIGHT
   }),
+  computed: {
+    ...mapState(["mode"])
+  },
   methods: {
     setRating: function(rating) {
       this.form.mark = rating;
@@ -60,12 +71,7 @@ export default {
       }
       try {
         await addReview(this.sessionId, this.form.mark, this.form.content);
-        this.$bvToast.toast("Review has been added", {
-          title: "Success",
-          variant: "success",
-          toaster: "b-toaster-top-center",
-          autoHideDelay: 3000
-        });
+        this.showSuccessMessage();
         this.resetForm();
       } catch (err) {
         this.reviewAddError = err.message;
@@ -74,6 +80,14 @@ export default {
     },
     resetForm: function() {
       this.form = { mark: 0, content: "" };
+    },
+    showSuccessMessage: function() {
+      this.$bvToast.toast("Review has been added", {
+        title: "Success",
+        variant: "success",
+        toaster: "b-toaster-top-center",
+        autoHideDelay: 3000
+      });
     }
   }
 };

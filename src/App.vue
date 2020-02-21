@@ -4,6 +4,9 @@
     <b-container>
       <b-row>
         <b-col>
+          <b-alert :show="errorMessage !== ''" variant="danger">{{
+            errorMessage
+          }}</b-alert>
           <router-view />
         </b-col>
       </b-row>
@@ -20,7 +23,7 @@ export default {
     Header
   },
   computed: {
-    ...mapState(["mode"])
+    ...mapState(["mode", "errorMessage"])
   }
 };
 </script>

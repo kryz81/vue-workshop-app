@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
-import Session from "../Session";
+import Session from "../SessionDetails";
 
 jest.mock("../../services/sessions");
 
