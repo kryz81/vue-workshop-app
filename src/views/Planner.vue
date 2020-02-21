@@ -1,8 +1,8 @@
 <template>
   <div>
     <h4 class="mb-4">Planner</h4>
-    <MySessions v-if="userName" />
-    <b-alert :show="true" variant="info" v-if="!userName"
+    <MySessions v-if="user" />
+    <b-alert :show="true" variant="info" v-if="!user"
       >You need to log in to see your planned sessions.</b-alert
     >
   </div>
@@ -17,7 +17,7 @@ export default {
     MySessions
   },
   computed: {
-    ...mapState(["mode", "userName"])
+    ...mapState(["mode", "user"])
   }
 };
 </script>

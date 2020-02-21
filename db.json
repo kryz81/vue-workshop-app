@@ -1,9 +1,16 @@
 {
-  "login": [
+  "users": [
+    {
+      "name": "Test User",
+      "email": "test@test",
+      "password": "test",
+      "plannedSessions": []
+    },
     {
       "name": "Kryz",
       "email": "k@kryz.dev",
-      "password": "zyrk"
+      "password": "zyrk",
+      "plannedSessions": []
     }
   ],
   "sessions": [

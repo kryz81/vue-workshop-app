@@ -29,12 +29,16 @@
         </b-list-group>
       </div>
     </div>
+    <div v-if="!sessions || sessions.length === 0">
+      No planned sessions yet.
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { getAndGroupSessionsByDay } from "../services/sessions";
+import { getUserByEmail } from "../services/user";
+import { getSessionsByIdAndGroup } from "../services/sessions";
 import SessionDays from "./SessionDays";
 
 export default {
@@ -47,15 +51,27 @@ export default {
     loading: false
   }),
   computed: {
-    ...mapState(["mode"])
+    ...mapState(["mode", "user"])
   },
   methods: {
     ...mapActions(["setError"])
   },
   async mounted() {
+    if (!this.user) {
+      await this.$router.push("/");
+    }
+
     try {
       this.loading = true;
-      this.sessions = await getAndGroupSessionsByDay();
+      const currentUser = await getUserByEmail(this.user.email);
+
+      if (!currentUser) {
+        throw new Error("Invalid user");
+      }
+
+      this.sessions = await getSessionsByIdAndGroup(
+        currentUser.plannedSessions
+      );
       this.days = Object.keys(this.sessions).sort(Number);
     } catch (err) {
       this.setError(`Cannot load sessions. Error: ${err.message}`);

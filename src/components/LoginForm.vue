@@ -50,7 +50,7 @@ export default {
     login: async function() {
       try {
         const userData = await login(this.form.email, this.form.password);
-        this.setUser(userData.name);
+        this.setUser({ name: userData.name, email: userData.email });
         await this.$router.push("/");
       } catch (err) {
         this.loginError = err.message;

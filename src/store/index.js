@@ -12,11 +12,15 @@ export const MODE_DARK = "dark";
 export const MODE_LIGHT = "light";
 
 export default new Vuex.Store({
-  plugins: [createPersistedState()],
+  plugins: [
+    createPersistedState({
+      filter: mutation => mutation.type !== SET_ERROR
+    })
+  ],
   state: {
     mode: MODE_LIGHT,
     errorMessage: "",
-    userName: ""
+    user: null
   },
   mutations: {
     TOGGLE_MODE(state) {
@@ -25,8 +29,8 @@ export default new Vuex.Store({
     SET_ERROR(state, errorMessage) {
       state.errorMessage = errorMessage;
     },
-    SET_USER(state, userName) {
-      state.userName = userName;
+    SET_USER(state, user) {
+      state.user = user;
     }
   },
   actions: {
@@ -36,8 +40,8 @@ export default new Vuex.Store({
     setError({ commit }, message) {
       commit(SET_ERROR, message);
     },
-    setUser({ commit }, userName) {
-      commit(SET_USER, userName);
+    setUser({ commit }, user) {
+      commit(SET_USER, user);
     }
   },
   modules: {}
