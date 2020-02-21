@@ -1,8 +1,6 @@
-import axios from "axios";
+import client from "./client";
 
-const BASE_URL = "http://localhost:3000/sessions";
-
-export const getSessions = () => axios.get(BASE_URL);
+export const getSessions = () => client.get("/sessions");
 
 export const getAndGroupSessionsByDay = async () => {
   const res = await getSessions();
@@ -15,5 +13,4 @@ export const getAndGroupSessionsByDay = async () => {
   }, {});
 };
 
-export const getSessionById = sessionId =>
-  axios.get(`${BASE_URL}/${sessionId}`);
+export const getSessionById = sessionId => client.get(`/sessions/${sessionId}`);

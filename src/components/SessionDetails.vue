@@ -17,7 +17,7 @@
         </b-col>
         <b-col v-if="reviews.length > 0" cols="5">
           <ReviewsList :reviews="reviews" />
-          <div v-if="reviewsTotal > reviews.length">
+          <div v-if="reviews.length > 0 && reviewsTotal > reviews.length">
             <router-link
               :to="{ name: 'SessionReviews', params: { sessionId: id } }"
               >Show all reviews</router-link
@@ -56,7 +56,7 @@ export default {
       this.loading = true;
       const sessionRes = await getSessionById(this.id);
       this.session = sessionRes.data;
-      const reviewsRes = await getReviewsBySessionId(this.id);
+      const reviewsRes = await getReviewsBySessionId(this.id, 2);
       this.reviews = reviewsRes.data;
       this.reviewsTotal = reviewsRes.headers["x-total-count"];
     } catch (err) {

@@ -1,8 +1,10 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="info" class="mb-4">
     <b-container>
-      <b-navbar-brand href="/" class="mr-5"
-        ><strong>Conference Tracker</strong></b-navbar-brand
+      <b-navbar-brand class="mr-5"
+        ><router-link to="/"
+          ><strong>Conference Tracker</strong></router-link
+        ></b-navbar-brand
       >
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
@@ -45,7 +47,7 @@ export default {
     ...mapActions(["toggleMode", "setUser"]),
     logout: function() {
       this.setUser();
-      this.$router.push("/");
+      this.$router.push("/login");
     }
   },
   computed: {
@@ -56,3 +58,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+a strong {
+  color: #fff;
+}
+</style>

@@ -10,14 +10,14 @@
           :read-only="true"
           :show-rating="false"
           :star-size="15"
-          :rating="review.mark"
+          :rating="review.rating"
         />
       </b-card-text>
       <b-card-text class="mt-2 mb-1"
         ><small>{{ review.added | moment("YYYY-MM-DD") }}</small></b-card-text
       >
-      <b-card-text
-        ><small>{{ review.content }}</small></b-card-text
+      <b-card-text v-if="review.comment"
+        ><small>{{ review.comment }}</small></b-card-text
       >
     </b-card>
   </div>

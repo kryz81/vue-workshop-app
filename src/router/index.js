@@ -62,9 +62,8 @@ const routes = [
   {
     path: "/planner",
     name: "Planner",
-    components: {
-      default: Home
-    }
+    component: () =>
+      import(/* webpackChunkName: "planner" */ "../views/Planner.vue")
   },
   {
     path: "*",

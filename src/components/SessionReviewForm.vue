@@ -5,27 +5,34 @@
     @submit.prevent="save"
   >
     <b-form-group
-      id="input-group-mark"
-      label="Your note:"
-      label-for="input-mark"
+      id="input-group-rating"
+      label="Your rating:"
+      label-for="input-rating"
       class="mb-4"
     >
       <StarRating
         :show-rating="false"
         :star-size="25"
-        :rating="form.mark"
+        :rating="form.rating"
         @rating-selected="setRating"
       />
+      <b-alert
+        v-if="$v.form.rating.$dirty && $v.form.rating.$invalid"
+        variant="danger"
+        class="mt-3"
+        :show="true"
+        >Please select your rating</b-alert
+      >
     </b-form-group>
     <b-form-group
-      id="input-group-content"
-      label="Your review (optional):"
-      label-for="input-content"
+      id="input-group-comment"
+      label="Your comment (optional):"
+      label-for="input-comment"
       class="mb-4"
     >
       <b-form-textarea
-        id="input-content"
-        v-model.lazy="form.content"
+        id="input-comment"
+        v-model.lazy="form.comment"
       ></b-form-textarea>
     </b-form-group>
     <b-button type="submit" variant="success">Send</b-button>
@@ -39,6 +46,7 @@
 import { mapState } from "vuex";
 
 import StarRating from "vue-star-rating";
+import { required, between } from "vuelidate/lib/validators";
 import { addReview } from "../services/reviews";
 import { MODE_LIGHT } from "../store";
 
@@ -53,25 +61,41 @@ export default {
     }
   },
   data: () => ({
-    form: { mark: undefined, content: "" },
+    form: { rating: 0, comment: "" },
     reviewAdded: false,
     reviewAddError: "",
     MODE_LIGHT
   }),
   computed: {
-    ...mapState(["mode"])
+    ...mapState(["mode", "userName"])
+  },
+  validations: {
+    form: {
+      rating: {
+        required,
+        between: between(1, 5)
+      }
+    }
   },
   methods: {
     setRating: function(rating) {
-      this.form.mark = rating;
+      this.form.rating = rating;
+      this.$v.form.rating.$touch();
     },
     save: async function() {
-      if (!this.form.mark) {
-        alert("Select a mark");
+      if (!this.userName) {
+        await this.$router.push("/");
       }
+
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+
       try {
-        await addReview(this.sessionId, this.form.mark, this.form.content);
+        await addReview(this.sessionId, this.form.rating, this.form.comment);
         this.showSuccessMessage();
+        this.$v.$reset();
         this.resetForm();
       } catch (err) {
         this.reviewAddError = err.message;
@@ -79,7 +103,7 @@ export default {
       }
     },
     resetForm: function() {
-      this.form = { mark: 0, content: "" };
+      this.form = { rating: 0, comment: "" };
     },
     showSuccessMessage: function() {
       this.$bvToast.toast("Review has been added", {

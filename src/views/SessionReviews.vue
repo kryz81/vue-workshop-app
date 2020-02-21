@@ -27,7 +27,7 @@ export default {
   async mounted() {
     try {
       this.loading = true;
-      const reviewsRes = await getReviewsBySessionId(this.sessionId, 2);
+      const reviewsRes = await getReviewsBySessionId(this.sessionId);
       this.reviews = reviewsRes.data;
     } catch (err) {
       console.log(err);

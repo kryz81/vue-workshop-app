@@ -57,29 +57,22 @@
       "id": "1e5c8a1a-ea24-4b28-80e8-5a9217601739",
       "added": "2020-02-20T16:15:46.030Z",
       "sessionId": "node-01",
-      "mark": 4,
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "rating": 4,
+      "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       "id": "567fa566-b501-437a-8494-923dfc7875a1",
       "added": "2020-02-20T16:22:31.434Z",
       "sessionId": "node-01",
-      "mark": 5,
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "rating": 5,
+      "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      "id": "20e11b12-5176-4a87-be89-e79f6e99223f",
-      "added": "2020-02-20T17:02:25.493Z",
+      "id": "3c4a75bc-ad9e-4877-b46e-d0b7145ebbac",
+      "added": "2020-02-21T14:47:05.000Z",
       "sessionId": "node-01",
-      "mark": 2,
-      "content": "I have a response from server and there are auth token, max age and some other values. In Postman it looks like."
-    },
-    {
-      "id": "e61054b5-38e0-4508-b4c2-d5c6ada099b1",
-      "added": "2020-02-21T09:36:58.815Z",
-      "sessionId": "testing-01",
-      "mark": 4,
-      "content": "My beautiful first review"
+      "rating": 1,
+      "comment": ""
     }
   ]
 }
