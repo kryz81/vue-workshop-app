@@ -1,9 +1,8 @@
 import axios from "axios";
-
-const BASE_URL = "http://localhost:3000";
+import { BACKEND_URL } from "../config";
 
 const client = axios.create({
-  baseURL: BASE_URL
+  baseURL: BACKEND_URL
 });
 
 export default client;
