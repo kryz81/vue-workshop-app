@@ -33,8 +33,8 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { login } from "../services/login";
-import { MODE_LIGHT } from "../store";
+import { login } from "../../services/login";
+import { MODE_LIGHT } from "../../store";
 
 export default {
   data: () => ({

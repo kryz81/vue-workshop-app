@@ -25,7 +25,7 @@
 
 <script>
 import StarRating from "vue-star-rating";
-import { REVIEWS_DEFAULT_LIMIT } from "../services/reviews";
+import { REVIEWS_DEFAULT_LIMIT } from "../../services/reviews";
 
 export default {
   components: {

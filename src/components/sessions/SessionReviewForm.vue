@@ -47,8 +47,8 @@ import { mapState } from "vuex";
 
 import StarRating from "vue-star-rating";
 import { required, between } from "vuelidate/lib/validators";
-import { addReview } from "../services/reviews";
-import { MODE_LIGHT } from "../store";
+import { addReview } from "../../services/reviews";
+import { MODE_LIGHT } from "../../store";
 
 export default {
   components: {
@@ -67,7 +67,7 @@ export default {
     MODE_LIGHT
   }),
   computed: {
-    ...mapState(["mode", "userName"])
+    ...mapState(["mode", "user"])
   },
   validations: {
     form: {
@@ -83,7 +83,7 @@ export default {
       this.$v.form.rating.$touch();
     },
     save: async function() {
-      if (!this.userName) {
+      if (!this.user) {
         await this.$router.push("/");
       }
 

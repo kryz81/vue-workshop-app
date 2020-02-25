@@ -2,9 +2,17 @@
   <div>
     <div v-if="loading">Loading session...</div>
     <div v-if="session">
-      <h4 class="mb-4">{{ session.title }}</h4>
+      <h4 class="mb-2">{{ session.title }}</h4>
       <b-row>
         <b-col :cols="reviews.length > 0 ? '7' : '12'">
+          <p class="mb-4">{{ session.tutor }}</p>
+          <div class="mb-4">
+            <b-badge variant="secondary mr-2">ROOM {{ session.room }}</b-badge>
+            <b-badge variant="secondary mr-2">DAY {{ session.day }}</b-badge>
+            <b-badge variant="primary"
+              >{{ session.startDate }} - {{ session.endDate }}</b-badge
+            >
+          </div>
           <p>{{ session.description }}</p>
           <p class="mt-5">
             <strong>
@@ -31,9 +39,9 @@
 </template>
 
 <script>
-import { getSessionById } from "../services/sessions";
-import { getReviewsBySessionId } from "../services/reviews";
-import ReviewsList from "./ReviewsList";
+import { getSessionById } from "../../services/sessions";
+import { getReviewsBySessionId } from "../../services/reviews";
+import ReviewsList from "../reviews/ReviewsList";
 
 export default {
   components: {

@@ -16,7 +16,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { MODE_LIGHT } from "../store";
+import { MODE_LIGHT } from "../../store";
 
 export default {
   props: {

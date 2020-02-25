@@ -25,6 +25,11 @@
               <div>{{ session.tutor }}</div>
               <small>{{ session.startDate }} - {{ session.endDate }}</small>
             </div>
+            <div class="d-flex w-100 justify-content-end" v-if="user">
+              <a @click="addToPlannedSessions(session.id)">
+                <b-icon icon="check-box" variant="info" />
+              </a>
+            </div>
           </b-list-group-item>
         </b-list-group>
       </div>
@@ -34,7 +39,10 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { getAndGroupSessionsByDay } from "../services/sessions";
+import {
+  addToPlannedSessions,
+  getAndGroupSessionsByDay
+} from "../../services/sessions";
 import SessionDays from "./SessionDays";
 
 export default {
@@ -47,10 +55,29 @@ export default {
     loading: false
   }),
   computed: {
-    ...mapState(["mode"])
+    ...mapState(["mode", "user"])
   },
   methods: {
-    ...mapActions(["setError"])
+    ...mapActions(["setError"]),
+    addToPlannedSessions: async function(sessionId) {
+      if (!this.user) {
+        return;
+      }
+      try {
+        await addToPlannedSessions(this.user.email, sessionId);
+        this.showSuccessMessage();
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    showSuccessMessage: function() {
+      this.$bvToast.toast("Session has been added to your planner", {
+        title: "Success",
+        variant: "success",
+        toaster: "b-toaster-top-center",
+        autoHideDelay: 3000
+      });
+    }
   },
   async mounted() {
     try {

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Session from "../components/SessionDetails";
+import Session from "../components/sessions/SessionDetails";
 
 export default {
   props: {

@@ -8,7 +8,7 @@
 
 <script>
 import { getReviewsBySessionId } from "../services/reviews";
-import ReviewsList from "../components/ReviewsList";
+import ReviewsList from "../components/reviews/ReviewsList";
 
 export default {
   components: {

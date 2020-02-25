@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SessionsList from "../components/SessionsList";
+import SessionsList from "../components/sessions/SessionsList";
 
 export default {
   components: {

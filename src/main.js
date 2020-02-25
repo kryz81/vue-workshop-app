@@ -1,4 +1,5 @@
 import Vue from "vue";
+import VueCompositionApi from "@vue/composition-api";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import VueScrollTo from "vue-scrollto";
 import VueMoment from "vue-moment";
@@ -13,6 +14,7 @@ import highlight from "./directives/highlight";
 
 Vue.config.productionTip = false;
 
+Vue.use(VueCompositionApi);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueScrollTo);

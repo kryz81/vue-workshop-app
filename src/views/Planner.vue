@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4 class="mb-4">Planner</h4>
-    <MySessions v-if="user" />
+    <Planner v-if="user" />
     <b-alert :show="true" variant="info" v-if="!user"
       >You need to log in to see your planned sessions.</b-alert
     >
@@ -10,11 +10,11 @@
 
 <script>
 import { mapState } from "vuex";
-import MySessions from "../components/MySessions";
+import Planner from "../components/planner/Planner";
 
 export default {
   components: {
-    MySessions
+    Planner
   },
   computed: {
     ...mapState(["mode", "user"])

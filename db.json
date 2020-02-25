@@ -1,16 +1,21 @@
 {
   "users": [
     {
+      "id": "1",
       "name": "Test User",
       "email": "test@test",
       "password": "test",
       "plannedSessions": []
     },
     {
+      "id": "2",
       "name": "Kryz",
       "email": "k@kryz.dev",
       "password": "zyrk",
-      "plannedSessions": []
+      "plannedSessions": [
+        "node-01",
+        "testing-01"
+      ]
     }
   ],
   "sessions": [
