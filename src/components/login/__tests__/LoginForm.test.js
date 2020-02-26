@@ -1,6 +1,7 @@
 import { mount } from "@vue/test-utils";
 import LoginForm from "../LoginForm";
 import { login } from "../../../services/login";
+import flushPromises from "flush-promises";
 
 jest.mock("../../../services/login", () => ({
   login: jest.fn((email, password) =>
@@ -52,8 +53,7 @@ describe("LoginForm", () => {
     expect(login).toHaveBeenCalledWith("user@email", "pass");
   });
 
-  // @todo fix test
-  it.skip("show error message on login error", async () => {
+  it("show error message on login error", async () => {
     login.mockResolvedValue(null);
     const wrapper = createComponent();
 
@@ -62,8 +62,8 @@ describe("LoginForm", () => {
 
     wrapper.find("form").trigger("submit");
 
-    await wrapper.vm.$nextTick();
+    await flushPromises();
 
-    expect(wrapper.find(".login-error").html()).toEqual("Invalid credentials");
+    expect(wrapper.find(".login-error").text()).toEqual("Invalid credentials");
   });
 });
