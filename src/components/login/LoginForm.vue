@@ -25,7 +25,7 @@
       ></b-form-input>
     </b-form-group>
     <b-button type="submit" variant="success">Log in</b-button>
-    <div v-if="loginError" class="mt-4">
+    <div class="mt-4 login-error" v-if="loginError">
       <b-alert :show="true" variant="danger">{{ loginError }}</b-alert>
     </div>
   </b-form>
@@ -48,12 +48,21 @@ export default {
   methods: {
     ...mapActions(["setUser"]),
     login: async function() {
+      this.loginError = "";
+      if (this.form.login === "" || this.form.password === "") {
+        return;
+      }
+
       try {
         const userData = await login(this.form.email, this.form.password);
+        if (!userData) {
+          this.loginError = "Invalid credentials";
+          return;
+        }
         this.setUser({ name: userData.name, email: userData.email });
         await this.$router.push("/");
       } catch (err) {
-        this.loginError = err.message;
+        console.log(err.message);
       }
     }
   }

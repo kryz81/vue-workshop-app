@@ -26,7 +26,7 @@
           <b-nav-item v-if="user" to="/profile"
             ><b-icon icon="person-fill"></b-icon> {{ user.name }}</b-nav-item
           >
-          <b-nav-item v-if="user" @click="logout"
+          <b-nav-item v-if="user" @click="logout" class="logout"
             ><b-icon icon="power"></b-icon> Logout</b-nav-item
           >
           <b-nav-item v-if="!user" to="/login"

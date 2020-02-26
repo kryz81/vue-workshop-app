@@ -5,7 +5,7 @@ describe("App", () => {
   it("renders correctly", () => {
     const wrapper = shallowMount(App, {
       stubs: ["router-view"],
-      computed: { mode: () => "dark" }
+      computed: { mode: () => "dark", errorMessage: () => "" }
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
