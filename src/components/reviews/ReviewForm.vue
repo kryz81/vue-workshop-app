@@ -37,7 +37,7 @@
     </b-form-group>
     <b-button type="submit" variant="success">Send</b-button>
     <div v-if="reviewAddError" class="mt-4">
-      <b-alert show variant="danger">{{ reviewAddError }}</b-alert>
+      <b-alert :show="true" variant="danger">{{ reviewAddError }}</b-alert>
     </div>
   </b-form>
 </template>

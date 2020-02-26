@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SessionReviewForm v-if="user" :sessionId="sessionId" />
+    <ReviewForm v-if="user" :sessionId="sessionId" />
     <div v-if="!user">
       <b-alert :show="true">You need to log in to add a review.</b-alert>
     </div>
@@ -9,11 +9,11 @@
 
 <script>
 import { mapState } from "vuex";
-import SessionReviewForm from "../components/sessions/SessionReviewForm";
+import ReviewForm from "../components/reviews/ReviewForm";
 
 export default {
   components: {
-    SessionReviewForm
+    ReviewForm
   },
   props: {
     sessionId: {
