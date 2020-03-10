@@ -1,24 +1,23 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="info" class="mb-4">
-    <b-container>
-      <b-navbar-brand class="mr-5"
-        ><router-link to="/"
-          ><strong>Conference Tracker</strong></router-link
-        ></b-navbar-brand
-      >
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item to="/about"
-            ><b-icon icon="question"></b-icon> About</b-nav-item
-          >
-          <b-nav-item to="/sessions"
-            ><b-icon icon="list-task"></b-icon> Sessions</b-nav-item
-          >
-        </b-navbar-nav>
-      </b-collapse>
-    </b-container>
-  </b-navbar>
+  <div class="navbar mb-4 navbar-dark bg-info navbar-expand-sm">
+    <div class="container">
+      <div class="navbar-brand mr-5">
+        <router-link to="/"><strong>Conference Tracker</strong></router-link>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <router-link to="/about"
+            ><span class="fas fa-question-circle"></span> About
+          </router-link>
+        </li>
+        <li class="nav-item ml-4">
+          <router-link to="/sessions"
+            ><span class="fas fa-list-alt"></span> Sessions
+          </router-link>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -26,7 +25,8 @@ export default {};
 </script>
 
 <style scoped>
-a strong {
+a strong,
+li a {
   color: #fff;
 }
 </style>

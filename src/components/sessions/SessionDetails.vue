@@ -3,27 +3,29 @@
     <div v-if="loading">Loading session...</div>
     <div v-if="session">
       <h4 class="mb-2">{{ session.title }}</h4>
-      <b-row>
-        <b-col :cols="reviews.length > 0 ? '7' : '12'">
+      <div class="row">
+        <div :class="reviews.length > 0 ? 'col-7' : 'col-12'">
           <p class="mb-4">{{ session.tutor }}</p>
           <div class="mb-4">
-            <b-badge variant="secondary mr-2">ROOM {{ session.room }}</b-badge>
-            <b-badge variant="secondary mr-2">DAY {{ session.day }}</b-badge>
-            <b-badge variant="primary"
-              >{{ session.startDate }} - {{ session.endDate }}</b-badge
-            >
+            <div class="badge badge-secondary mr-2">
+              ROOM {{ session.room }}
+            </div>
+            <div class="badge badge-secondary mr-2">DAY {{ session.day }}</div>
+            <div class="badge badge-primary">
+              {{ session.startDate }} - {{ session.endDate }}
+            </div>
           </div>
           <p>{{ session.description }}</p>
           <p class="mt-5">
             <strong>
               <router-link
                 :to="{ name: 'AddSessionReview', params: { sessionId: id } }"
-                ><b-icon icon="star-half"></b-icon> Write a review</router-link
+                ><span class="fas fa-star"></span> Write a review</router-link
               ></strong
             >
           </p>
-        </b-col>
-        <b-col v-if="reviews.length > 0" cols="5">
+        </div>
+        <div class="col-5" v-if="reviews.length > 0">
           <ReviewsList :reviews="reviews" />
           <div v-if="reviews.length > 0 && reviewsTotal > reviews.length">
             <router-link
@@ -31,8 +33,8 @@
               >Show all reviews</router-link
             >
           </div>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <router-view name="session" :sessionId="id" />
     </div>
   </div>

@@ -10,8 +10,6 @@ export const getReviewsBySessionId = (sessionId, limit) =>
     }&_sort=added&_order=desc`
   );
 
-export const getReviewById = reviewId => client.get(`/reviews/${reviewId}`);
-
 export const addReview = (sessionId, rating, comment) => {
   const review = {
     id: uuid(),

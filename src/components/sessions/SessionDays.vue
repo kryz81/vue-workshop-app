@@ -1,16 +1,18 @@
 <template>
   <div class="mt-4 mb-4">
     Show only:
-    <b-button
+    <button
       v-for="day in days"
       :key="day"
-      size="sm"
-      class="mr-1 ml-1"
-      :variant="day === selectedDay ? 'primary' : 'secondary'"
+      class="btn btn-sm mr-1 ml-1"
+      :class="{
+        'btn-primary': day === selectedDay,
+        'btn-secondary': day !== selectedDay
+      }"
       @click="$emit('filter', day)"
     >
-      DAY {{ day }}</b-button
-    >
+      DAY {{ day }}
+    </button>
     <a href="" @click.prevent="$emit('clear-filter')">[clear filter]</a>
   </div>
 </template>

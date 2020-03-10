@@ -1,13 +1,13 @@
 <template>
   <div class="h-100 main">
     <Header />
-    <b-container>
-      <b-row>
-        <b-col>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
           <router-view />
-        </b-col>
-      </b-row>
-    </b-container>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

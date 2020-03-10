@@ -1,11 +1,7 @@
 <template>
-  <b-form class="p-4 bg-light" @submit.prevent="save">
-    <b-form-group
-      id="input-group-rating"
-      label="Your rating:"
-      label-for="input-rating"
-      class="mb-4"
-    >
+  <div class="form p-4 bg-light" @submit.prevent="save">
+    <div id="input-group-rating" class="form-group mb-4">
+      <label>Your rating:</label>
       <StarRating
         :show-rating="false"
         :star-size="25"
@@ -19,23 +15,20 @@
         :show="true"
         >Please select your rating</b-alert
       >
-    </b-form-group>
-    <b-form-group
-      id="input-group-comment"
-      label="Your comment (optional):"
-      label-for="input-comment"
-      class="mb-4"
-    >
-      <b-form-textarea
+    </div>
+    <div id="input-group-comment" class="form-group mb-4">
+      <label for="input-comment">Your comment (optional):</label>
+      <textarea
+        class="form-control"
         id="input-comment"
         v-model.lazy="form.comment"
-      ></b-form-textarea>
-    </b-form-group>
+      ></textarea>
+    </div>
     <b-button type="submit" variant="success">Send</b-button>
     <div v-if="reviewAddError" class="mt-4">
       <b-alert :show="true" variant="danger">{{ reviewAddError }}</b-alert>
     </div>
-  </b-form>
+  </div>
 </template>
 
 <script>
