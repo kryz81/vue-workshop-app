@@ -1,9 +1,5 @@
 <template>
-  <b-form
-    class="p-4"
-    :class="mode === MODE_LIGHT ? 'bg-light' : 'bg-dark'"
-    @submit.prevent="save"
-  >
+  <b-form class="p-4 bg-light" @submit.prevent="save">
     <b-form-group
       id="input-group-rating"
       label="Your rating:"
@@ -43,12 +39,9 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 import StarRating from "vue-star-rating";
 import { required, between } from "vuelidate/lib/validators";
 import { addReview } from "../../services/reviews";
-import { MODE_LIGHT } from "../../store";
 
 export default {
   components: {
@@ -63,12 +56,8 @@ export default {
   data: () => ({
     form: { rating: 0, comment: "" },
     reviewAdded: false,
-    reviewAddError: "",
-    MODE_LIGHT
+    reviewAddError: ""
   }),
-  computed: {
-    ...mapState(["mode", "user"])
-  },
   validations: {
     form: {
       rating: {
@@ -83,10 +72,6 @@ export default {
       this.$v.form.rating.$touch();
     },
     save: async function() {
-      if (!this.user) {
-        await this.$router.push("/");
-      }
-
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;

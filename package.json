@@ -11,20 +11,14 @@
     "backend": "json-server --watch db.json"
   },
   "dependencies": {
-    "@vue/composition-api": "0.4.0",
     "axios": "0.19.2",
     "bootstrap-vue": "2.4.2",
-    "core-js": "^3.6.4",
-    "flush-promises": "1.0.2",
     "uuid": "3.4.0",
     "vue": "^2.6.11",
     "vue-moment": "4.1.0",
     "vue-router": "^3.1.5",
-    "vue-scrollto": "2.17.1",
     "vue-star-rating": "1.6.1",
-    "vuelidate": "0.7.5",
-    "vuex": "^3.1.2",
-    "vuex-persistedstate": "2.7.1"
+    "vuelidate": "0.7.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",

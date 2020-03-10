@@ -1,35 +1,37 @@
 <template>
   <div class="mt-4 mb-4">
-    Go to day:
+    Show only:
     <b-button
       v-for="day in days"
       :key="day"
       size="sm"
       class="mr-1 ml-1"
-      :variant="mode === MODE_LIGHT ? 'secondary' : 'info'"
-      @click="$scrollTo(`#day${day}`)"
+      :variant="day === selectedDay ? 'primary' : 'secondary'"
+      @click="$emit('filter', day)"
     >
       DAY {{ day }}</b-button
     >
+    <a href="" @click.prevent="$emit('clear-filter')">[clear filter]</a>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { MODE_LIGHT } from "../../store";
-
 export default {
   props: {
     days: {
       type: Array,
       required: true
+    },
+    selectedDay: {
+      type: String,
+      required: false
     }
-  },
-  data: () => ({
-    MODE_LIGHT
-  }),
-  computed: {
-    ...mapState(["mode"])
   }
 };
 </script>
+
+<style scoped>
+a {
+  margin-left: 15px;
+}
+</style>

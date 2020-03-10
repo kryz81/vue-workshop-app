@@ -1,14 +1,10 @@
 <template>
   <div>
-    <ReviewForm v-if="user" :sessionId="sessionId" />
-    <div v-if="!user">
-      <b-alert :show="true">You need to log in to add a review.</b-alert>
-    </div>
+    <ReviewForm :sessionId="sessionId" />
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
 import ReviewForm from "../components/reviews/ReviewForm";
 
 export default {
@@ -20,9 +16,6 @@ export default {
       type: String,
       required: true
     }
-  },
-  computed: {
-    ...mapState(["user"])
   }
 };
 </script>

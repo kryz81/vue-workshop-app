@@ -15,23 +15,6 @@
           <b-nav-item to="/sessions"
             ><b-icon icon="list-task"></b-icon> Sessions</b-nav-item
           >
-          <b-nav-item to="/planner"
-            ><b-icon icon="map"></b-icon> Planner</b-nav-item
-          >
-        </b-navbar-nav>
-        <b-navbar-nav class="ml-auto">
-          <b-button size="sm" class="toggle-mode mr-5" @click="toggleMode"
-            >{{ switchToMode }} Mode</b-button
-          >
-          <b-nav-item v-if="user" to="/profile"
-            ><b-icon icon="person-fill"></b-icon> {{ user.name }}</b-nav-item
-          >
-          <b-nav-item v-if="user" @click="logout" class="logout"
-            ><b-icon icon="power"></b-icon> Logout</b-nav-item
-          >
-          <b-nav-item v-if="!user" to="/login"
-            ><b-icon icon="lock-fill"></b-icon> Login</b-nav-item
-          >
         </b-navbar-nav>
       </b-collapse>
     </b-container>
@@ -39,24 +22,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
-import { MODE_LIGHT } from "../store";
-
-export default {
-  methods: {
-    ...mapActions(["toggleMode", "setUser"]),
-    logout: function() {
-      this.setUser(null);
-      this.$router.push("/login");
-    }
-  },
-  computed: {
-    ...mapState(["mode", "user"]),
-    switchToMode: function() {
-      return this.mode === MODE_LIGHT ? "Dark" : "Light";
-    }
-  }
-};
+export default {};
 </script>
 
 <style scoped>

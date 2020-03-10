@@ -1,4 +1,8 @@
-import Login from "../views/Login";
+import About from "../views/About";
+import Sessions from "../views/Sessions";
+import SessionDetails from "../views/SessionDetails";
+import AddSessionReview from "../views/AddSessionReview";
+import SessionReviews from "../views/SessionReviews";
 
 const routes = [
   {
@@ -7,38 +11,27 @@ const routes = [
     redirect: "/sessions"
   },
   {
-    path: "/login",
-    name: "Login",
-    component: Login
-  },
-  {
     path: "/about",
     name: "About",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    component: About
   },
   {
     path: "/sessions",
     name: "Sessions",
-    component: () =>
-      import(/* webpackChunkName: "sessions" */ "../views/Sessions.vue")
+    component: Sessions
   },
   {
     path: "/sessions/:sessionId",
     name: "SessionDetails",
     props: true,
-    component: () =>
-      import(/* webpackChunkName: "sessions" */ "../views/SessionDetails.vue"),
+    component: SessionDetails,
     children: [
       {
         path: "add-session-review",
         name: "AddSessionReview",
         props: true,
         components: {
-          session: () =>
-            import(
-              /* webpackChunkName: "sessions" */ "../views/AddSessionReview.vue"
-            )
+          session: AddSessionReview
         }
       },
       {
@@ -46,25 +39,10 @@ const routes = [
         name: "SessionReviews",
         props: true,
         components: {
-          session: () =>
-            import(
-              /* webpackChunkName: "sessions" */ "../views/SessionReviews.vue"
-            )
+          session: SessionReviews
         }
       }
     ]
-  },
-  {
-    path: "/planner",
-    name: "Planner",
-    component: () =>
-      import(/* webpackChunkName: "planner" */ "../views/Planner.vue")
-  },
-  {
-    path: "*",
-    name: "NotFound",
-    component: () =>
-      import(/* webpackChunkName: "notfound" */ "../views/NotFound.vue")
   }
 ];
 

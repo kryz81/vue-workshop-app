@@ -1,34 +1,32 @@
 <template>
   <div>
-    <div v-if="loading">Loading sessions...</div>
     <div v-if="sessions">
-      <SessionDays v-if="days.length" :days="days" />
+      <SessionDays
+        v-if="days.length"
+        :days="days"
+        :selected-day="selectedDay"
+        v-on:filter="filterByDay"
+        v-on:clear-filter="clearSelectedDay"
+      />
       <div class="mt-4" v-for="day in days" :key="`day${day}`">
-        <h5 :id="`day${day}`">DAY {{ day }}</h5>
-        <b-list-group>
+        <h5 :id="`day${day}`" v-if="sessions[day]">DAY {{ day }}</h5>
+        <b-list-group v-if="sessions[day]">
           <b-list-group-item
             v-for="session in sessions[day]"
             :key="session.id"
-            :class="`bg-${mode}`"
+            class="bg-light"
           >
             <div class="d-flex w-100 justify-content-between">
               <h5>
-                <router-link
-                  :to="`/sessions/${session.id}`"
-                  v-highlight="session.sponsored"
-                  >{{ session.title }}</router-link
-                >
+                <router-link :to="`/sessions/${session.id}`">{{
+                  session.title
+                }}</router-link>
               </h5>
               <strong>Room {{ session.room }}</strong>
             </div>
             <div class="d-flex w-100 justify-content-between">
               <div>{{ session.tutor }}</div>
               <small>{{ session.startDate }} - {{ session.endDate }}</small>
-            </div>
-            <div class="d-flex w-100 justify-content-end" v-if="user">
-              <a @click="addToPlannedSessions(session.id)">
-                <b-icon icon="check-box" variant="info" />
-              </a>
             </div>
           </b-list-group-item>
         </b-list-group>
@@ -38,11 +36,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import {
-  addToPlannedSessions,
-  getAndGroupSessionsByDay
-} from "../../services/sessions";
+import { getAndGroupSessionsByDay } from "../../services/sessions";
 import SessionDays from "./SessionDays";
 
 export default {
@@ -52,24 +46,9 @@ export default {
   data: () => ({
     sessions: undefined,
     days: [],
-    loading: false
+    selectedDay: null
   }),
-  computed: {
-    ...mapState(["mode", "user"])
-  },
   methods: {
-    ...mapActions(["setError"]),
-    addToPlannedSessions: async function(sessionId) {
-      if (!this.user) {
-        return;
-      }
-      try {
-        await addToPlannedSessions(this.user.email, sessionId);
-        this.showSuccessMessage();
-      } catch (err) {
-        console.log(err);
-      }
-    },
     showSuccessMessage: function() {
       this.$bvToast.toast("Session has been added to your planner", {
         title: "Success",
@@ -77,19 +56,31 @@ export default {
         toaster: "b-toaster-top-center",
         autoHideDelay: 3000
       });
+    },
+    filterByDay(day) {
+      this.selectedDay = day;
+      this.getSessions();
+    },
+    clearSelectedDay() {
+      this.selectedDay = null;
+      this.getSessions();
+    },
+    async getSessions() {
+      try {
+        const sessions = await getAndGroupSessionsByDay();
+        this.days = Object.keys(sessions).sort(Number);
+        if (this.selectedDay && sessions[this.selectedDay]) {
+          this.sessions = { [this.selectedDay]: sessions[this.selectedDay] };
+        } else {
+          this.sessions = sessions;
+        }
+      } catch (err) {
+        console.error(err);
+      }
     }
   },
   async mounted() {
-    try {
-      this.loading = true;
-      this.sessions = await getAndGroupSessionsByDay();
-      this.days = Object.keys(this.sessions).sort(Number);
-    } catch (err) {
-      this.setError(`Cannot load sessions. Error: ${err.message}`);
-      console.error(err);
-    } finally {
-      this.loading = false;
-    }
+    this.getSessions();
   }
 };
 </script>
