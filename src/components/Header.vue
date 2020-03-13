@@ -17,11 +17,18 @@
         </li>
       </ul>
     </div>
+    <Counter :initial="2" :max="5" />
   </div>
 </template>
 
 <script>
-export default {};
+import Counter from "./Counter";
+
+export default {
+  components: {
+    Counter
+  }
+};
 </script>
 
 <style scoped>
