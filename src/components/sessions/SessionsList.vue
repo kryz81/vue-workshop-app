@@ -10,17 +10,17 @@
       />
       <div class="mt-4" v-for="day in days" :key="`day${day}`">
         <h5 :id="`day${day}`" v-if="sessions[day]">DAY {{ day }}</h5>
-        <b-list-group v-if="sessions[day]">
-          <b-list-group-item
+        <ul v-if="sessions[day]">
+          <li
             v-for="session in sessions[day]"
             :key="session.id"
-            class="bg-light"
+            class="session-item"
           >
             <div class="d-flex w-100 justify-content-between">
               <h5>
-                <router-link :to="`/sessions/${session.id}`">{{
-                  session.title
-                }}</router-link>
+                <router-link :to="`/sessions/${session.id}`"
+                  >{{ session.title }}
+                </router-link>
               </h5>
               <strong>Room {{ session.room }}</strong>
             </div>
@@ -28,8 +28,8 @@
               <div>{{ session.tutor }}</div>
               <small>{{ session.startDate }} - {{ session.endDate }}</small>
             </div>
-          </b-list-group-item>
-        </b-list-group>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -84,3 +84,16 @@ export default {
   }
 };
 </script>
+
+<style>
+ul {
+  list-style-type: none;
+}
+
+.session-item {
+  background: lightgray;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+</style>
